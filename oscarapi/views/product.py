@@ -14,6 +14,7 @@ Selector = get_class("partner.strategy" , "Selector")
     ProductSerializer ,
     ProductStockRecordSerializer ,
     AvailabilitySerializer ,
+    ProductAttributeSerializer,
 ) = get_api_classes(
     "serializers.product" ,
     [
@@ -22,6 +23,7 @@ Selector = get_class("partner.strategy" , "Selector")
         "ProductSerializer" ,
         "ProductStockRecordSerializer" ,
         "AvailabilitySerializer" ,
+        "ProductAttributeSerializer"
     ] ,
 )
 
@@ -32,9 +34,9 @@ __all__ = ("ProductList" , "ProductDetail" , "ProductPrice" , "ProductAvailabili
 Product = get_model("catalogue" , "Product")
 Category = get_model("catalogue" , "Category")
 StockRecord = get_model("partner" , "StockRecord")
+ProductAttribute = get_model("catalogue" , "ProductAttribute")
 
-
-class ProductList(generics.ListAPIView):
+class ProductList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductLinkSerializer
 
@@ -122,3 +124,13 @@ class CategoryList(generics.ListAPIView):
 class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+
+class ProductAttributeList(generics.ListCreateAPIView):
+    queryset = ProductAttribute.objects.all()
+    serializer_class = ProductAttributeSerializer
+
+
+class ProductAttributeDetail(generics.ListCreateAPIView):
+    queryset = ProductAttribute.objects.all()
+    serializer_class = ProductAttributeSerializer

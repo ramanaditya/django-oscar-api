@@ -26,6 +26,7 @@ def PUBLIC_APIS(r, f):
         ("orders", reverse("order-list", request=r, format=f)),
         ("options", reverse("option-list", request=r, format=f)),
         ("products", reverse("product-list", request=r, format=f)),
+        ("product-attributes" , reverse("product-attribute" , request = r , format = f)) ,
         ("countries", reverse("country-list", request=r, format=f)),
         ("useraddresses", reverse("useraddress-list", request=r, format=f)),
     ]
