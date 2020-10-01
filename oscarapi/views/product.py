@@ -131,6 +131,6 @@ class ProductAttributeList(generics.ListCreateAPIView):
     serializer_class = ProductAttributeSerializer
 
 
-class ProductAttributeDetail(generics.ListCreateAPIView):
+class ProductAttributeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = ProductAttribute.objects.all()
     serializer_class = ProductAttributeSerializer
