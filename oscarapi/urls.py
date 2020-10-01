@@ -66,7 +66,11 @@ LoginView = get_api_class("views.login", "LoginView")
     CategoryList,
     CategoryDetail,
     ProductAttributeList,
-    ProductAttributeDetail
+    ProductAttributeDetail,
+    ProductAttributeValueList,
+    ProductAttributeValueDetail,
+    ProductImageList,
+    ProductImageDetail,
 ) = get_api_classes(
     "views.product",
     [
@@ -79,7 +83,11 @@ LoginView = get_api_class("views.login", "LoginView")
         "CategoryList",
         "CategoryDetail",
         "ProductAttributeList",
-        "ProductAttributeDetail"
+        "ProductAttributeDetail",
+        "ProductAttributeValueList",
+        "ProductAttributeValueDetail",
+        "ProductImageList",
+        "ProductImageDetail",
     ],
 )
 
@@ -210,6 +218,10 @@ urlpatterns = [
     ),
     path("productattributes/", ProductAttributeList.as_view(), name="product-attribute"),
     path("productattributes/<int:pk>/", ProductAttributeDetail.as_view(), name="product-attribute-detail"),
+    path("productattributevalues/", ProductAttributeValueList.as_view(), name="product-attribute-value"),
+    path("productattributevalues/<int:pk>/", ProductAttributeValueDetail.as_view(), name="product-attribute-value-detail"),
+    path("productimages/", ProductImageList.as_view(), name="product-images"),
+    path("productimages/<int:pk>/", ProductImageDetail.as_view(), name="product-image-detail"),
     path("users/<int:pk>/", UserDetail.as_view(), name="user-detail"),
     path("checkout/", CheckoutView.as_view(), name="api-checkout"),
     path("orders/", OrderList.as_view(), name="order-list"),

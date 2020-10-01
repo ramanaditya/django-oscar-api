@@ -14,7 +14,9 @@ Selector = get_class("partner.strategy" , "Selector")
     ProductSerializer ,
     ProductStockRecordSerializer ,
     AvailabilitySerializer ,
-    ProductAttributeSerializer,
+    ProductAttributeSerializer ,
+    ProductAttributeValueSerializer ,
+    ProductImageSerializer ,
 ) = get_api_classes(
     "serializers.product" ,
     [
@@ -23,7 +25,9 @@ Selector = get_class("partner.strategy" , "Selector")
         "ProductSerializer" ,
         "ProductStockRecordSerializer" ,
         "AvailabilitySerializer" ,
-        "ProductAttributeSerializer"
+        "ProductAttributeSerializer" ,
+        "ProductAttributeValueSerializer" ,
+        "ProductImageSerializer"
     ] ,
 )
 
@@ -35,6 +39,9 @@ Product = get_model("catalogue" , "Product")
 Category = get_model("catalogue" , "Category")
 StockRecord = get_model("partner" , "StockRecord")
 ProductAttribute = get_model("catalogue" , "ProductAttribute")
+ProductAttributeValue = get_model("catalogue" , "ProductAttributeValue")
+ProductImage = get_model("catalogue" , "ProductImage")
+
 
 class ProductList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
@@ -134,3 +141,23 @@ class ProductAttributeList(generics.ListCreateAPIView):
 class ProductAttributeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = ProductAttribute.objects.all()
     serializer_class = ProductAttributeSerializer
+
+
+class ProductAttributeValueList(generics.ListCreateAPIView):
+    queryset = ProductAttributeValue.objects.all()
+    serializer_class = ProductAttributeValueSerializer
+
+
+class ProductAttributeValueDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ProductAttributeValue.objects.all()
+    serializer_class = ProductAttributeValueSerializer
+
+
+class ProductImageList(generics.ListCreateAPIView):
+    queryset = ProductImage.objects.all()
+    serializer_class = ProductImageSerializer
+
+
+class ProductImageDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ProductImage.objects.all()
+    serializer_class = ProductImageSerializer
